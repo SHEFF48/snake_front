@@ -7,11 +7,11 @@ import { useDispatch, useSelector } from "react-redux"
 import type { AppDispatch } from "../../store/store"
 import {
   moveSnake,
-  selectLevel,
   selectStatus,
   setDirection,
 } from "../../store/features/game/gameSlice"
 import Button from "./Button"
+import LevelBar from "./LevelBar"
 
 interface ICell extends ICoordinates {
   key: string
@@ -40,7 +40,6 @@ const GameBoard = () => {
   // const apple = { x: 5, y: 5 }
 
   const gameStatus = useSelector(selectStatus)
-  const gameLevel = useSelector(selectLevel)
 
   const dispatch = useDispatch<AppDispatch>()
 
@@ -85,7 +84,9 @@ const GameBoard = () => {
         <div className="w-1/3 text-left">
           <PointsBar />
         </div>
-        <div className="w-1/3">Level: {gameLevel}</div>
+        <div className="w-1/3">
+          <LevelBar />
+        </div>
         <div className="w-1/3 font-semibold text-right ">
           <Button />
         </div>

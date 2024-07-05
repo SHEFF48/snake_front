@@ -15,10 +15,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "types": ["vitest/globals"],
-    "composite": true
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   // "include": ["vite.config.ts"],
   "include": ["src/**/*.ts", "src/**/*.d.ts"],
-  "exclude": ["node_modules", "dist", "vite.config.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  // "exclude": ["node_modules", "dist", "vite.config.ts"],
+  "references": [{ "path": "tsconfig.node.json" }]
 }
