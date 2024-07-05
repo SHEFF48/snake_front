@@ -86,7 +86,7 @@ const GameBoard = () => {
           <PointsBar />
         </div>
         <div className="w-1/3">Level: {gameLevel}</div>
-        <div className="w-1/3 text-right">
+        <div className="w-1/3 font-semibold text-right ">
           <Button />
         </div>
       </div>

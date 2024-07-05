@@ -25,7 +25,7 @@ module.exports = {
         "custom-outer": ".5px .5px 15px 4px #7000ff",
       },
       textShadow: {
-        glow: ".5px .5px 15px #7000ff",
+        glow: ".5px .5px 15px rgb(247, 60, 60)",
       },
       backgroundImage: (theme) => ({
         "custom-gradient":

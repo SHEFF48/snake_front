@@ -4,31 +4,31 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "../../store"
 
 export interface UserState {
-  userId: string
+  playerName: string
 }
 
 const initialState: UserState = {
-  userId: "0",
+  playerName: "",
 }
 
 export const playerSlice = createSlice({
   name: "player",
   initialState,
   reducers: {
-    setPlayerName: (state, action: PayloadAction<string>) => {
-      state.userId = action.payload
+    setPlayer: (state, action: PayloadAction<string>) => {
+      state.playerName = action.payload
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setPlayerName } = playerSlice.actions
+export const { setPlayer } = playerSlice.actions
 
 export default playerSlice.reducer
 
 /* Selectors */
 
-export const selectUserId = (state: RootState) => state.user.userId
+export const selectPlayerName = (state: RootState) => state.player.playerName
 
 // export const initialUser = (): AppThunk => dispatch => {
 //   const getUser = async () => {

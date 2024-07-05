@@ -5,6 +5,7 @@ import { store } from "./store/store"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import "./index.css"
 import Game from "./Game"
+import Start from "./Start"
 
 const container = document.getElementById("root")
 
@@ -14,6 +15,10 @@ if (container) {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <Start />,
+    },
+    {
+      path: "/game",
       element: <Game />,
     },
   ])

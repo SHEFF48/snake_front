@@ -5,6 +5,7 @@ import {
   selectStatus,
   setGameStatus,
 } from "../../store/features/game/gameSlice"
+import { cn } from "../../utils/utils"
 
 const Button = () => {
   const dispatch = useDispatch<AppDispatch>()
@@ -45,7 +46,17 @@ const Button = () => {
     }
   }
 
-  return <button onClick={clickHandler}>{getButtonName()}</button>
+  return (
+    <button
+      onClick={clickHandler}
+      className={cn(
+        (gameStatus === "pause" || gameStatus === "stop") && "text-green-500",
+        (gameStatus === "play" || gameStatus === "over") && "text-red-500",
+      )}
+    >
+      {getButtonName()}
+    </button>
+  )
 }
 
 export default Button
