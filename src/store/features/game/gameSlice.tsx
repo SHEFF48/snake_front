@@ -1,25 +1,17 @@
-// import type { RootState } from "@/store/store"
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "../../store"
 import { getRandomInt, getRandomPoints } from "../../../utils/utils"
 import { getTopResults, postPlayerResult } from "@/utils/api"
+import { ICoordinates } from "@/components/Board/interfaces"
 
-interface IApple {
-  x: number
-  y: number
+interface IApple extends ICoordinates {
   points: number
 }
 
-interface ISnake {
-  x: number
-  y: number
-}
+type ISnake = ICoordinates
 
-interface IDirection {
-  x: number
-  y: number
-}
+type IDirection = ICoordinates
 
 interface ILevel {
   currentLevel: number
@@ -182,34 +174,3 @@ export const selectSpeed = (state: RootState) => state.game.speed
 export const selectStatus = (state: RootState) => state.game.status
 export const selectLevel = (state: RootState) => state.game.level.currentLevel
 export const selectTopResults = (state: RootState) => state.game.topResults
-
-// export const initialUser = (): AppThunk => dispatch => {
-//   const getUser = async () => {
-//     const userId = (await getUserId()) || "688147289"
-//     if (userId) {
-//       dispatch(setUserId(userId))
-//     }
-//   }
-//   getUser()
-// }
-
-/* Thunks */
-
-// export const startEnergyIncrement = (): AppThunk => (dispatch, getState) => {
-//   const state = getState()
-//   const rechargingSpeed = 1000 / state.boost.upgrades.rechargingSpeedLevel
-//   const intervalId = setInterval(() => {
-//     const state = getState()
-
-//     if (state.energy.currentEnergyValue < state.energy.fullEnergyValue) {
-//       dispatch(incrementEnergy())
-//     } else {
-//       dispatch(clearIntervalId())
-//     }
-//   }, rechargingSpeed)
-//   dispatch(setIntervalId(intervalId))
-// }
-
-// export const stopEnergyIncrement = (): AppThunk => dispatch => {
-//   dispatch(clearIntervalId())
-// }

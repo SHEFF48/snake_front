@@ -46,6 +46,7 @@ export async function getData(API_URL: string | undefined) {
   return data
 }
 
+/*------------------------------------------------------------------------------*/
 export const getTopResults = async () => {
   const endpoint = "top-results"
 
