@@ -20,10 +20,14 @@ const Game = () => {
     !playerName.length && navigate("/")
   })
 
-  const handleButton = () => {
-    dispatch(setPlayer(""))
+  const reset = () => {
     dispatch(setGameStatus("over"))
     dispatch(resetGame())
+  }
+
+  const handleExitButton = () => {
+    dispatch(setPlayer(""))
+    reset()
     navigate("/")
   }
 
@@ -34,8 +38,10 @@ const Game = () => {
       </div>
       <GameBoard />
       <div className="flex justify-center gap-10 w-full">
-        <Link to={"/top"}>Show TOP-10</Link>
-        <button onClick={handleButton} className=" font-semibold">
+        <Link onClick={reset} to={"/top"}>
+          Show TOP-10
+        </Link>
+        <button onClick={handleExitButton} className=" font-semibold">
           Exit
         </button>
       </div>
