@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import type { AppDispatch } from "../../store/store"
 import {
   moveSnake,
+  recordPlayerResult,
   selectStatus,
   setDirection,
 } from "../../store/features/game/gameSlice"
@@ -76,6 +77,10 @@ const GameBoard = () => {
       const intervalId = setInterval(() => dispatch(moveSnake()), 200)
       return () => clearInterval(intervalId)
     }
+
+    if (gameStatus === "over") {
+      dispatch(recordPlayerResult())
+    }
   }, [dispatch, gameStatus])
 
   return (
@@ -96,7 +101,7 @@ const GameBoard = () => {
         className={`flex flex-wrap w-[${boardWidth}] h-[${boardHeight}] transition-all`}
         style={{ width: boardWidth, height: boardHeight }}
       >
-        {boardCells.map((cel, index) => {
+        {boardCells.map(cel => {
           return (
             <Cell
               key={cel.key}

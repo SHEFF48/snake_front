@@ -5,9 +5,10 @@ import {
   selectPlayerName,
   setPlayer,
 } from "./store/features/player/playerSlice"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import type { AppDispatch } from "./store/store"
 import { useEffect } from "react"
+import { resetGame, setGameStatus } from "./store/features/game/gameSlice"
 
 const Game = () => {
   const navigate = useNavigate()
@@ -21,6 +22,8 @@ const Game = () => {
 
   const handleButton = () => {
     dispatch(setPlayer(""))
+    dispatch(setGameStatus("over"))
+    dispatch(resetGame())
     navigate("/")
   }
 
@@ -30,9 +33,12 @@ const Game = () => {
         Welcome:<span className=" font-semibold">{playerName}</span>
       </div>
       <GameBoard />
-      <button onClick={handleButton} className=" font-semibold">
-        Exit
-      </button>
+      <div className="flex justify-center gap-10 w-full">
+        <Link to={"/top"}>Show TOP-10</Link>
+        <button onClick={handleButton} className=" font-semibold">
+          Exit
+        </button>
+      </div>
     </div>
   )
 }

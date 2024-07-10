@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import "./index.css"
 import Game from "./Game"
 import Start from "./Start"
+import TopScore from "./Top"
 
 const container = document.getElementById("root")
 
@@ -20,6 +21,10 @@ if (container) {
     {
       path: "/game",
       element: <Game />,
+    },
+    {
+      path: "/top",
+      element: <TopScore />,
     },
   ])
 

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import type { AppDispatch } from "./store/store"
 import { setPlayer } from "./store/features/player/playerSlice"
+import { setGameStatus } from "./store/features/game/gameSlice"
 
 const Start = () => {
   const [playerName, setPlayerName] = useState<string>("")
@@ -18,6 +19,11 @@ const Start = () => {
     }
     setError("Enter Player Name")
   }
+
+  useEffect(() => {
+    dispatch(setGameStatus("stop"))
+    console.log("set game staus stop")
+  }, [dispatch])
 
   useEffect(() => {
     playerName.length && setError("")
